@@ -23,6 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  mobx: ^2.0.0
+  flutter_mobx: ^2.0.0
 
 
 
@@ -38,6 +40,8 @@ dev_dependencies:
   flutter_tindercard: ^0.1.7
   http: ^0.13.3
   path_provider: ^2.0.1
+  build_runner: ^1.12.2
+  mobx_codegen: ^2.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
