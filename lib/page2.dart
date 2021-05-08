@@ -26,7 +26,7 @@ class _Page2State extends State<Page2> {
   @override
   Widget build(BuildContext context) {
     getData();
-    print('___________________________________');
+  //  print('___________________________________');
     print(_items.length);
     return Scaffold(
       appBar: AppBar(title: Text('List Avatar'), centerTitle: true, actions: [

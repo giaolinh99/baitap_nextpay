@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:lecture2/models/sinhvien.dart';
 import 'package:mobx/mobx.dart';

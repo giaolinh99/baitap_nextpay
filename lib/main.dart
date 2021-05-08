@@ -6,8 +6,11 @@ import 'package:lecture2/page1.dart';
 import 'package:lecture2/page2.dart';
 import 'package:lecture2/page3.dart';
 import 'package:lecture2/page_4.dart';
+import 'package:lecture2/store/student_store.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+
+import 'Student_api.dart';
 
 void main() {
   runApp(MyApp());
@@ -34,14 +37,16 @@ class MyStatefulWidget extends StatefulWidget {
 /// This is the private State class that goes with MyStatefulWidget.
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int selectedIndex = 0;
+  StudentStore studentStore = StudentStore();
+  StudentApi studentApi = StudentApi();
   static TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
-  static List<Widget> _widgetOptions = <Widget>[
+  static List<Widget> _widgetOptions = [
 
     HomePage(),
     Page2(),
-    Page3(),
+    Page3(getIndex: studentStore.changePage),
     Page4(),
   ];
 
@@ -59,6 +64,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         title: Text('BottomNavigationBar Sample'),
       ),
       body: Center(
+
         child: _widgetOptions.elementAt(selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -90,7 +96,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       ),
     );
   }
-
+  @override
+  void initState() {
+    StudentStore studentStore = StudentStore();
+  }
   Future<List<SinhVien>> _read() async {
     final prefs = await SharedPreferences.getInstance();
     final key = 'data';
