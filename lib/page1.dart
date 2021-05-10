@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
 
 
-    //print(_items.length);
+   // print(_items.length);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(25),
@@ -52,14 +52,7 @@ class _HomePageState extends State<HomePage> {
                           },
                           splashColor: Colors.deepPurple,
                           child: Card(
-                            // margin: EdgeInsets.all(10),
-                            // child: ListTile(
-                            //   leading: Image.network(_items.elementAt(index).avatar, width: 30,),
-                            //   title: Text(_items.elementAt(index).name),
-                            //   subtitle: Text(_items.elementAt(index).address),
-                            // ),
 
-                            // //+++++++++++++++++++++++++++ donre ++++++++++++++++++++++++++++++++++++++++++++++
 
                             elevation: 2,
                             child: Row(
@@ -110,6 +103,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
+   _save();
     getData();
   }
 
@@ -137,6 +131,8 @@ class _HomePageState extends State<HomePage> {
    prefs.setString(key, response.body);
  }
 }
+
+
 
 
 
