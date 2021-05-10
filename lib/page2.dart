@@ -1,9 +1,6 @@
 import 'dart:convert';
-import 'http_request.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:lecture2/models/sinhvien.dart';
-import 'package:lecture2/read_Json.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 void main() => runApp(Page2());
@@ -42,37 +39,6 @@ class _Page2State extends State<Page2> {
 
       body: Center(
 
-        // child: GridView.builder(
-        //   itemCount: _items.length,
-        //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        //     crossAxisCount: 3,
-        //     crossAxisSpacing: 4.0,
-        //     mainAxisSpacing: 4.0
-        // ),
-        //   itemBuilder: (BuildContext context, int index){
-        //     return Card(
-        //
-        //
-        //       child: Column(
-        //           children:[
-        //             Container(
-        //               child : ListTile(
-        //               title: Image.asset(_items[index]["avatar"],height: 80,),
-        //
-        //               subtitle: Text(_items[index]["name"]),
-        //             ),),
-        //
-        //           ],
-        //       ),
-        //     );
-        //   },
-        //
-        // ),
-        //
-
-
-
-       // // ++++++++++++++++++++ TRY +++++++++++++
 
 
         child:

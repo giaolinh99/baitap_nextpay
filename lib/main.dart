@@ -139,14 +139,6 @@ class MyStatefulWidget extends StatefulWidget {
 
 
 
-
-
-
-
-
-
-
-
 class _MyStatefulWidgetState extends State<MyStatefulWidget>{
   StudentStore studentStore = StudentStore();
   StudentApi studentApi = StudentApi();
@@ -184,7 +176,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>{
               ),
             ],
               currentIndex:  studentStore.selectedIndex,
-              onTap: (index) => studentStore.changePage(index),
+             onTap: (index) => studentStore.changePage(index),
+
         ),
       ),
     );
@@ -204,9 +197,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>{
     final response = await http.get(
         Uri.parse('https://6090a8023847340017021912.mockapi.io/linh/user3'));
     final students = response.body;
-    print("===============================");
-    print(students);
-
     final prefs = await SharedPreferences.getInstance();
     final key = 'data';
     prefs.setString(key, response.body);

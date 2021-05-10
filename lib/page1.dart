@@ -3,7 +3,6 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:lecture2/sv_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'http_request.dart';
 import 'models/sinhvien.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,13 +13,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
  static  List<SinhVien> _items = [];
 
-//------cu----
 
- // Future<List<dynamic>> getData() async {
- //
- //   _items = await fetchAlbum();
- // }
-  //--------------cu --------
   Future<List<dynamic>> getData() async {
 
     _items = await read();
@@ -36,7 +29,7 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.all(25),
         child: Column(
           children: [
-            Text(_items.length.toString()),
+            //Text(),
             _items.length > 0
                 ? Expanded(
                     child: ListView.builder(
@@ -123,9 +116,6 @@ class _HomePageState extends State<HomePage> {
    final response = await http.get(
        Uri.parse('https://6090a8023847340017021912.mockapi.io/linh/user3'));
    final students = response.body;
-   print("===============================");
-   print(students);
-
    final prefs = await SharedPreferences.getInstance();
    final key = 'data';
    prefs.setString(key, response.body);
