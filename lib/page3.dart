@@ -57,12 +57,13 @@ class Page3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Page3'),
+          backgroundColor: Colors.purple[50],
+          title: Text('Page3',style: TextStyle(color: Colors.purple)),
           centerTitle: true,
         ),
         body: Center(
             child: GestureDetector(
-              child: Icon(Icons.arrow_back),
+              child: Icon(Icons.reply,color: Colors.purple,),
               onTap: () {
                 getIndex(0);
               },

@@ -11,8 +11,10 @@ class SvPage extends StatelessWidget {
   Widget build(BuildContext context) {
     print(sinhvien);
     return Scaffold(
+
         appBar: AppBar(
-          title: Text('${sinhvien['name']}'),
+          backgroundColor: Colors.purple[50],
+          title: Text('${sinhvien['name']}',style: TextStyle(color: Colors.purple),),
 
         ),
         body: Column(

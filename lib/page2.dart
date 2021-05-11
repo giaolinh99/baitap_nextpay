@@ -26,9 +26,12 @@ class _Page2State extends State<Page2> {
   //  print('___________________________________');
     print(_items.length);
     return Scaffold(
-      appBar: AppBar(title: Text('List Avatar'), centerTitle: true, actions: [
+
+      appBar: AppBar(
+          backgroundColor: Colors.purple[50],
+          title: Text('Images',style: TextStyle(color: Colors.purple),), centerTitle: true, actions: [
         InkWell(
-          child: Icon(Icons.list),
+          child: Icon(Icons.linear_scale, color: Colors.purple,),
           onTap: (){
           setState(() {
             listType=!listType;

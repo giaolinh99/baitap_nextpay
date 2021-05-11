@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:lecture2/sv_page.dart';
@@ -13,18 +14,25 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
  static  List<SinhVien> _items = [];
 
-
-  Future<List<dynamic>> getData() async {
-
-    _items = await read();
+  @override
+  void initState(){
+    super.initState();
+    _save();
+    getData();
   }
 
-
+  Future<List<dynamic>> getData() async {
+    _items = await read();
+  }
   Widget build(BuildContext context) {
 
-
-   // print(_items.length);
+    // print(_items.length);
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.purple[50],
+        title: Text('List student',style: TextStyle(color: Colors.purple),),
+        centerTitle: true,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(25),
         child: Column(
@@ -45,8 +53,6 @@ class _HomePageState extends State<HomePage> {
                           },
                           splashColor: Colors.deepPurple,
                           child: Card(
-
-
                             elevation: 2,
                             child: Row(
                               children: [
@@ -65,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                                       children: [
                                         Text(
                                           _items[index].name,
-                                          style: TextStyle(fontSize: 20.0),
+                                          style: TextStyle(fontSize: 20.0, fontFamily: 'Open_Sans'),
                                         ),
                                       ],
                                     ),
@@ -94,11 +100,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  @override
-  void initState() {
-   _save();
-    getData();
-  }
 
   Future<List<SinhVien>> read() async {
    final prefs = await SharedPreferences.getInstance();
@@ -107,18 +108,20 @@ class _HomePageState extends State<HomePage> {
    List<dynamic> data = json.decode(students);
    List<SinhVien> posts =
    data.map((dynamic item) => SinhVien.fromJson(item)).toList();
-
    return posts;
  }
 
+ Map<String, String> userHeader = {"content-type": "application/json; charset=utf-8", "Accept": "application/json;  charset=utf-8"};
 
  _save() async {
    final response = await http.get(
-       Uri.parse('https://6090a8023847340017021912.mockapi.io/linh/user3'));
+       Uri.parse('https://6090a8023847340017021912.mockapi.io/linh/user3'), headers: userHeader);
    final students = response.body;
+   List<int> bytes = students.codeUnits;
+   String getData = utf8.decode(bytes);
    final prefs = await SharedPreferences.getInstance();
    final key = 'data';
-   prefs.setString(key, response.body);
+   prefs.setString(key, getData);
  }
 }
 

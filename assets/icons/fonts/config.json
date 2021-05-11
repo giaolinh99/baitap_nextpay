@@ -1,0 +1,34 @@
+{
+  "name": "",
+  "css_prefix_text": "",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "c91e021561eef67ea7a6f07743d7a664",
+      "css": "user",
+      "code": 61447,
+      "src": "fontawesome5"
+    },
+    {
+      "uid": "afca52b09b1d6a5f56142d4dc059f503",
+      "css": "sync",
+      "code": 61473,
+      "src": "fontawesome5"
+    },
+    {
+      "uid": "aed0642f716d94a3ae9b96686f55a6ab",
+      "css": "eye",
+      "code": 61550,
+      "src": "fontawesome5"
+    },
+    {
+      "uid": "600124ae6e8bf1def3c3a2dc15f5a47a",
+      "css": "images",
+      "code": 62210,
+      "src": "fontawesome5"
+    }
+  ]
+}

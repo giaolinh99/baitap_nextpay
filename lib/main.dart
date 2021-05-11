@@ -157,25 +157,27 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>{
       ),
       bottomNavigationBar: Observer(
         builder: (context) => BottomNavigationBar(
-            backgroundColor: Colors.black87,
+             backgroundColor: Colors.purple[50],
             type: BottomNavigationBarType.fixed,
-            items: const<BottomNavigationBarItem>[
+            items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                  icon: Icon(Icons.home, color: Colors.grey),
-                  title: Text('page1')),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.list, color: Colors.grey),
-                  title: Text('page2')),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.pages, color: Colors.grey),
-                title: Text('Page3'),
+                  icon: Icon(Icons.account_circle, color: Colors.purple),
+                  title:studentStore.selectedIndex== 0 ?Text('page1', style: TextStyle()): Text('', style: TextStyle())
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.pageview, color: Colors.grey),
-                title: Text('page4'),
+                  icon: Icon(Icons.wallpaper, color: Colors.purple),
+                  title:studentStore.selectedIndex== 1 ?Text('page2', style: TextStyle()): Text('', style: TextStyle())),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.replay, color: Colors.purple),
+                title: studentStore.selectedIndex== 2 ?Text('page3', style: TextStyle()): Text('', style: TextStyle())
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.public, color: Colors.purple),
+                title: studentStore.selectedIndex== 3 ?Text('page4', style: TextStyle()): Text('', style: TextStyle())
               ),
             ],
               currentIndex:  studentStore.selectedIndex,
+             selectedItemColor: Colors.purple,
              onTap: (index) => studentStore.changePage(index),
 
         ),
