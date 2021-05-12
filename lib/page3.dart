@@ -4,8 +4,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'main.dart';
 
-
-
 // void main() {
 //   runApp(Page3());
 // }
@@ -47,32 +45,34 @@ import 'main.dart';
 //   }
 // }
 
-
-
-
 class Page3 extends StatelessWidget {
   final Function(int) getIndex;
+
   Page3({Key key, this.getIndex}) : super(key: key);
 
   Widget build(BuildContext context) {
+    _removeData();
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.purple[50],
-          title: Text('Page3',style: TextStyle(color: Colors.purple)),
+          title: Text('Page3', style: TextStyle(color: Colors.purple)),
           centerTitle: true,
         ),
         body: Center(
-            child: GestureDetector(
-              child: Icon(Icons.reply,color: Colors.purple,),
-              onTap: () {
-                getIndex(0);
-              },
-            )));
+            child: InkWell(
+          child: Icon(
+            Icons.reply,
+            size: 100,
+            color: Colors.purple,
+          ),
+          onTap: () {
+            getIndex(0);
+          },
+        )));
   }
 
   _removeData() async {
-    final prefs = SharedPreferences.getInstance();
+    final prefs = await  SharedPreferences.getInstance();
+    await prefs.clear();
   }
 }
-
-

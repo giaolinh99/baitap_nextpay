@@ -13,15 +13,15 @@ abstract class StudentStoreBase with Store {
   ReactionDisposer disposer;
   var pageController = PageController();
 
-  // void runReactionDisposer() {
-  //   disposer = reaction((_) => listType, (result) {
-  //     return result;
-  //   });
-  // }
-  //
-  // void releaseReaction() {
-  //   disposer();
-  // }
+  void runReactionDisposer() {
+    disposer = reaction((_) => listType, (result) {
+      return result;
+    });
+  }
+
+  void releaseReaction() {
+    disposer();
+  }
 
   @observable
   ObservableFuture<List<SinhVien>> students;

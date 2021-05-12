@@ -29,9 +29,6 @@ class MyApp extends StatelessWidget {
       home: MyStatefulWidget(),
     );
   }
-
-
-
 }
 
 class MyStatefulWidget extends StatefulWidget {
@@ -136,15 +133,12 @@ class MyStatefulWidget extends StatefulWidget {
 
 //---------done
 
-
-
-
-class _MyStatefulWidgetState extends State<MyStatefulWidget>{
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   StudentStore studentStore = StudentStore();
-  StudentApi studentApi = StudentApi();
+  //StudentApi studentApi = StudentApi();
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
         controller: studentStore.pageController,
@@ -157,51 +151,55 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>{
       ),
       bottomNavigationBar: Observer(
         builder: (context) => BottomNavigationBar(
-             backgroundColor: Colors.purple[50],
-            type: BottomNavigationBarType.fixed,
-            items: <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.account_circle, color: Colors.purple),
-                  title:studentStore.selectedIndex== 0 ?Text('page1', style: TextStyle()): Text('', style: TextStyle())
-              ),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.wallpaper, color: Colors.purple),
-                  title:studentStore.selectedIndex== 1 ?Text('page2', style: TextStyle()): Text('', style: TextStyle())),
-              BottomNavigationBarItem(
+          backgroundColor: Colors.purple[50],
+          type: BottomNavigationBarType.fixed,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+                icon: Icon(Icons.account_circle, color: Colors.purple),
+                title: studentStore.selectedIndex == 0
+                    ? Text('page1', style: TextStyle())
+                    : Text('', style: TextStyle())),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.wallpaper, color: Colors.purple),
+                title: studentStore.selectedIndex == 1
+                    ? Text('page2', style: TextStyle())
+                    : Text('', style: TextStyle())),
+            BottomNavigationBarItem(
                 icon: Icon(Icons.replay, color: Colors.purple),
-                title: studentStore.selectedIndex== 2 ?Text('page3', style: TextStyle()): Text('', style: TextStyle())
-              ),
-              BottomNavigationBarItem(
+                title: studentStore.selectedIndex == 2
+                    ? Text('page3', style: TextStyle())
+                    : Text('', style: TextStyle())),
+            BottomNavigationBarItem(
                 icon: Icon(Icons.public, color: Colors.purple),
-                title: studentStore.selectedIndex== 3 ?Text('page4', style: TextStyle()): Text('', style: TextStyle())
-              ),
-            ],
-              currentIndex:  studentStore.selectedIndex,
-             selectedItemColor: Colors.purple,
-             onTap: (index) => studentStore.changePage(index),
-
+                title: studentStore.selectedIndex == 3
+                    ? Text('page4', style: TextStyle())
+                    : Text('', style: TextStyle())),
+          ],
+          currentIndex: studentStore.selectedIndex,
+          selectedItemColor: Colors.purple,
+          onTap: (index) => studentStore.changePage(index),
         ),
       ),
     );
   }
-  Future<List<SinhVien>> _read() async {
-    final prefs = await SharedPreferences.getInstance();
-    final key = 'data';
-    final students = prefs.getString(key);
-    List<dynamic> data = json.decode(students);
-    List<SinhVien> posts =
-        data.map((dynamic item) => SinhVien.fromJson(item)).toList();
 
-    return posts;
-  }
-
-  _save() async {
-    final response = await http.get(
-        Uri.parse('https://6090a8023847340017021912.mockapi.io/linh/user3'));
-    final students = response.body;
-    final prefs = await SharedPreferences.getInstance();
-    final key = 'data';
-    prefs.setString(key, response.body);
-  }
+  // Future<List<SinhVien>> _read() async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   final key = 'data';
+  //   final students = prefs.getString(key);
+  //   List<dynamic> data = json.decode(students);
+  //   List<SinhVien> posts =
+  //       data.map((dynamic item) => SinhVien.fromJson(item)).toList();
+  //
+  //   return posts;
+  // }
+  //
+  // _save() async {
+  //   final response = await http.get(
+  //       Uri.parse('https://6090a8023847340017021912.mockapi.io/linh/user3'));
+  //   final students = response.body;
+  //   final prefs = await SharedPreferences.getInstance();
+  //   final key = 'data';
+  //   prefs.setString(key, response.body);
+  // }
 }
-

@@ -6,15 +6,31 @@ import 'package:lecture2/models/sinhvien.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-class LocalData {
-  static Future<List<SinhVien>> _read() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    final key = 'data';
-    final students = prefs.getString(key);
-    List<dynamic> data = json.decode(students);
-    List<SinhVien> posts =
-    data.map((dynamic item) => SinhVien.fromJson(item)).toList();
+// class LocalData {
+//   static Future<List<SinhVien>> _read() async {
+//     SharedPreferences prefs = await SharedPreferences.getInstance();
+//     final key = 'data';
+//     final students = prefs.getString(key);
+//     List<dynamic> data = json.decode(students);
+//     List<SinhVien> posts =
+//     data.map((dynamic item) => SinhVien.fromJson(item)).toList();
+//
+//     return posts;
+//   }
+// }
 
-    return posts;
-  }
+Future<List<dynamic>> read11() async {
+  List<dynamic> items1 = [];
+  final prefs = await SharedPreferences.getInstance();
+  final key = 'data';
+  final students = prefs.getString(key);
+  List<dynamic> data = json.decode(students);
+  List<SinhVien> posts =
+  data.map((dynamic item) => SinhVien.fromJson(item)).toList();
+  items1 =posts;
+  return items1;
+
+  // // moi
+
+
 }
